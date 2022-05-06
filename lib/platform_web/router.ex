@@ -17,7 +17,7 @@ defmodule PlatformWeb.Router do
   scope "/", PlatformWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", IndexLive
   end
 
   # Other scopes may use custom stacks.
