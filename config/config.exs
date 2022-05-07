@@ -48,8 +48,29 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :surface, :components, [
-  {Surface.Components.Form.ErrorTag, default_translator: {PlatformWeb.ErrorHelpers, :translate_error}}
+  {
+    Surface.Components.Form.ErrorTag,
+    default_translator: {PlatformWeb.ErrorHelpers, :translate_error}
+  }
 ]
+
+# Initiialize uberauthe
+config :ueberauth, Ueberauth,
+  providers: [
+    github:
+      {Ueberauth.Strategy.Github,
+       [
+         send_redirect_uri: false,
+         allow_private_emails: true,
+         default_scope: "user,public_repo,notifications"
+       ]}
+  ]
+
+# Initialize github ueberauth
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: {:system, "GITHUB_CLIENT_ID"},
+  client_secret: {:system, "GITHUB_CLIENT_SECRET"}
+
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

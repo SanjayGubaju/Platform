@@ -1,0 +1,4 @@
+<a class="button" href="/auth/github">
+  <i class="fa fa-github" />
+  Sign in with GitHub
+</a>

@@ -18,6 +18,11 @@ defmodule PlatformWeb.Router do
     pipe_through :browser
 
     live "/", IndexLive
+
+    # Authentication handler
+    get "/auth/:provider", AuthController, :request
+    get "/auth/:provider/callback", AuthController, :callback
+    post "/auth/identity/callback", AuthController, :identity_callback
   end
 
   # Other scopes may use custom stacks.

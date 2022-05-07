@@ -20,7 +20,7 @@ defmodule Platform.MixProject do
   def application do
     [
       mod: {Platform.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ueberauth]
     ]
   end
 
@@ -51,7 +51,10 @@ defmodule Platform.MixProject do
       {:plug_cowboy, "~> 2.5"},
 
       # UI ====================================
-      {:surface, "~> 0.7.4"}
+      {:surface, "~> 0.7.4"},
+
+      # Authentication ========================
+      {:ueberauth_github, "~> 0.7"}
     ]
   end
 
