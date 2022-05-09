@@ -62,7 +62,7 @@ config :ueberauth, Ueberauth,
        [
          send_redirect_uri: false,
          allow_private_emails: true,
-         default_scope: "user,public_repo,notifications"
+         default_scope: "user"
        ]}
   ]
 
@@ -70,7 +70,6 @@ config :ueberauth, Ueberauth,
 config :ueberauth, Ueberauth.Strategy.Github.OAuth,
   client_id: {:system, "GITHUB_CLIENT_ID"},
   client_secret: {:system, "GITHUB_CLIENT_SECRET"}
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
