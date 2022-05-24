@@ -20,6 +20,7 @@ defmodule PlatformWeb.Router do
     live "/", IndexLive
 
     # Authentication handler
+    delete "/auth/logout", AuthController, :sign_out
     get "/auth/:provider", AuthController, :request
     get "/auth/:provider/callback", AuthController, :callback
     post "/auth/identity/callback", AuthController, :identity_callback

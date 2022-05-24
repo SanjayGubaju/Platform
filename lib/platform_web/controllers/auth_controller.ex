@@ -1,6 +1,6 @@
 defmodule PlatformWeb.AuthController do
   use PlatformWeb, :controller
-  plug Ueberauth, providers: [:github], base_path: "/auth"
+  plug(Ueberauth, providers: [:github], base_path: "/auth")
 
   alias Ueberauth.Strategy.Helpers
   alias Platform.Auth
@@ -69,5 +69,16 @@ defmodule PlatformWeb.AuthController do
       first_name: first_name,
       last_name: last_name
     }
+  end
+
+  def sign_out(conn, _) do
+    if socket_id = get_session(conn, :live_socket_id) do
+      PhoenixWeb.Endpoint.broadcast(socket_id, "disconnect", %{})
+    end
+
+    conn
+    |> configure_session(renew: true)
+    |> clear_session()
+    |> redirect(to: Routes.sign_in_path(conn, :index))
   end
 end
