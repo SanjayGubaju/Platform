@@ -41,3 +41,8 @@ assets/js/_hooks/
 
 # Ignore all .DS_Store files
 **/.DS_Store
+
+# Intellij Files
+.idea/
+platform.iml
+
